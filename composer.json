@@ -1,0 +1,25 @@
+{
+    "name": "thiago/ame-merchant-sdk",
+    "description": "SDK para comunicação com a API merchant da AME.",
+    "type": "library",
+    "config": {
+        "platform": {
+            "php": "7.0"
+        }
+    },
+    "require": {
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thiago Meireles da Silva",
+            "email": "thiagosilva@mail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {"AmeMerchant\\": "src/"}
+    }
+}

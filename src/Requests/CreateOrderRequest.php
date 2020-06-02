@@ -5,7 +5,6 @@ namespace AmeMerchant\Requests;
 use AmeMerchant\Data\Order;
 use AmeMerchant\Responses\CreateOrderResponse;
 use GuzzleHttp\Psr7\Request;
-use JsonException;
 use Throwable;
 
 class CreateOrderRequest extends BaseRequest
@@ -21,10 +20,11 @@ class CreateOrderRequest extends BaseRequest
      *
      * @param string $token
      * @param Order $order
+     * @param bool $production
      */
-    public function __construct(string $token, Order $order)
+    public function __construct(string $token, Order $order, bool $production = true)
     {
-        parent::__construct();
+        parent::__construct($production);
 
         $this->order = $order;
         $this->token = $token;

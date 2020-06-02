@@ -20,10 +20,11 @@ class CaptureOrderRequest extends BaseRequest
      *
      * @param string $token
      * @param string $authorizationId
+     * @param bool $production
      */
-    public function __construct(string $token, string $authorizationId)
+    public function __construct(string $token, string $authorizationId, bool $production = true)
     {
-        parent::__construct();
+        parent::__construct($production);
 
         $this->authorizationId = $authorizationId;
         $this->token           = $token;

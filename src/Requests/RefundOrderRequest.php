@@ -4,7 +4,6 @@ namespace AmeMerchant\Requests;
 
 use AmeMerchant\Responses\RefundOrderResponse;
 use GuzzleHttp\Psr7\Request;
-use JsonException;
 use Throwable;
 
 /**
@@ -31,10 +30,12 @@ class RefundOrderRequest extends BaseRequest
      * @param string $token
      * @param string $orderId
      * @param string $refundId
+     * @param int $amount
+     * @param bool $production
      */
-    public function __construct(string $token, string $orderId, string $refundId, int $amount)
+    public function __construct(string $token, string $orderId, string $refundId, int $amount, bool $production = true)
     {
-        parent::__construct();
+        parent::__construct($production);
 
         $this->token    = $token;
         $this->orderId  = $orderId;

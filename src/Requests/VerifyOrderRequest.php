@@ -23,10 +23,11 @@ class VerifyOrderRequest extends BaseRequest
      *
      * @param string $token
      * @param string $orderId
+     * @param bool $production
      */
-    public function __construct(string $token, string $orderId)
+    public function __construct(string $token, string $orderId, bool $production = true)
     {
-        parent::__construct();
+        parent::__construct($production);
 
         $this->token   = $token;
         $this->orderId = $orderId;

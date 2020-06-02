@@ -1,6 +1,6 @@
 {
-    "name": "thiago/ame-merchant-sdk",
-    "description": "SDK para comunicação com a API merchant da AME.",
+    "name": "thiagomeireless/ame-merchant-sdk",
+    "description": "SDK para comunicação com a API AME Merchant.",
     "type": "library",
     "config": {
         "platform": {

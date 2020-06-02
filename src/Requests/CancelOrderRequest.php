@@ -1,17 +1,15 @@
 <?php
 
-namespace AmeMerchant\Request;
+namespace AmeMerchant\Requests;
 
-use AmeMerchant\Data\Order;
-use AmeMerchant\Response\CancelOrderResponse;
-use AmeMerchant\Response\CreateOrderResponse;
-use AmeMerchant\Response\LoginResponse;
-use AmeMerchant\Response\VerifyOrderResponse;
-use GuzzleHttp\Exception\GuzzleException;
+use AmeMerchant\Responses\CancelOrderResponse;
 use GuzzleHttp\Psr7\Request;
-use RuntimeException;
 use Throwable;
 
+/**
+ * Class CancelOrderRequest
+ * @package AmeMerchant\Requests
+ */
 class CancelOrderRequest extends BaseRequest
 {
     /** @var string */
@@ -34,7 +32,9 @@ class CancelOrderRequest extends BaseRequest
         $this->orderId = $orderId;
     }
 
-
+    /**
+     * @return CancelOrderResponse
+     */
     public function execute(): CancelOrderResponse
     {
         return parent::execute();

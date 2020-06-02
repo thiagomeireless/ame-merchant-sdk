@@ -1,15 +1,15 @@
 <?php
 
-namespace AmeMerchant\Response;
+namespace AmeMerchant\Responses;
 
 use AmeMerchant\Data\Attribute;
 use JsonSerializable;
 
 /**
  * Class CancelOrderResponse
- * @package AmeMerchant\Response
+ * @package AmeMerchant\Responses
  */
-class CancelOrderResponse implements JsonSerializable
+class CaptureOrderResponse implements JsonSerializable
 {
     /** @var string */
     private $id;

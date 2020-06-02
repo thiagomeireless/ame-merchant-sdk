@@ -1,32 +1,32 @@
 <?php
 
-namespace AmeMerchant\Response;
+namespace AmeMerchant\Responses;
 
 use JsonSerializable;
 
 /**
- * Class LoginResponse
+ * Class RefundOrderResponse
  * @package AmeMerchant\Responses
  */
-class LoginResponse implements JsonSerializable
+class RefundOrderResponse implements JsonSerializable
 {
-    /** @var array */
-    private $payload;
-
-    /** @var array */
-    private $scope;
+    /** @var string */
+    private $refundId;
 
     /** @var string */
-    private $access_token;
+    private $operationId;
+
+    /** @var int */
+    private $amount;
 
     /** @var string */
-    private $token_type;
-
-    /** @var integer */
-    private $expires_in;
+    private $status;
 
     /** @var string */
-    private $jti;
+    private $createdAt;
+
+    /** @var string */
+    private $refundedAt;
 
     /**
      * LoginResponse constructor.
@@ -54,50 +54,50 @@ class LoginResponse implements JsonSerializable
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getPayload(): array
+    public function getRefundId(): string
     {
-        return $this->payload;
-    }
-
-    /**
-     * @return array
-     */
-    public function getScope(): array
-    {
-        return $this->scope;
+        return $this->refundId;
     }
 
     /**
      * @return string
      */
-    public function getAccessToken(): string
+    public function getOperationId(): string
     {
-        return $this->access_token;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTokenType(): string
-    {
-        return $this->token_type;
+        return $this->operationId;
     }
 
     /**
      * @return int
      */
-    public function getExpiresIn(): int
+    public function getAmount(): int
     {
-        return $this->expires_in;
+        return $this->amount;
     }
 
     /**
      * @return string
      */
-    public function getJti(): string
+    public function getStatus(): string
     {
-        return $this->jti;
+        return $this->status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRefundedAt(): string
+    {
+        return $this->refundedAt;
     }
 }

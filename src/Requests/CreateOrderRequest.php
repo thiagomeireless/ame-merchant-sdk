@@ -1,13 +1,11 @@
 <?php
 
-namespace AmeMerchant\Request;
+namespace AmeMerchant\Requests;
 
 use AmeMerchant\Data\Order;
-use AmeMerchant\Response\CreateOrderResponse;
-use AmeMerchant\Response\LoginResponse;
-use GuzzleHttp\Exception\GuzzleException;
+use AmeMerchant\Responses\CreateOrderResponse;
 use GuzzleHttp\Psr7\Request;
-use RuntimeException;
+use JsonException;
 use Throwable;
 
 class CreateOrderRequest extends BaseRequest
@@ -32,7 +30,10 @@ class CreateOrderRequest extends BaseRequest
         $this->token = $token;
     }
 
-
+    /**
+     * @return CreateOrderResponse
+     * @throws JsonException
+     */
     public function execute(): CreateOrderResponse
     {
         return parent::execute();

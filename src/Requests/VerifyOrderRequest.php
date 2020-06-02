@@ -1,16 +1,15 @@
 <?php
 
-namespace AmeMerchant\Request;
+namespace AmeMerchant\Requests;
 
-use AmeMerchant\Data\Order;
-use AmeMerchant\Response\CreateOrderResponse;
-use AmeMerchant\Response\LoginResponse;
-use AmeMerchant\Response\VerifyOrderResponse;
-use GuzzleHttp\Exception\GuzzleException;
+use AmeMerchant\Responses\VerifyOrderResponse;
 use GuzzleHttp\Psr7\Request;
-use RuntimeException;
 use Throwable;
 
+/**
+ * Class VerifyOrderRequest
+ * @package AmeMerchant\Requests
+ */
 class VerifyOrderRequest extends BaseRequest
 {
     /** @var string */
@@ -33,7 +32,9 @@ class VerifyOrderRequest extends BaseRequest
         $this->orderId = $orderId;
     }
 
-
+    /**
+     * @return VerifyOrderResponse
+     */
     public function execute(): VerifyOrderResponse
     {
         return parent::execute();

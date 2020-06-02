@@ -20,7 +20,24 @@ class Item implements JsonSerializable
      */
     public function jsonSerialize(): array
     {
-        return get_object_vars($this);
+        $vars = get_object_vars($this);
+
+        return array_filter($vars, static function ($value) {
+            return $value !== null;
+        });
+    }
+
+    public static function createFromArray(array $data): Item
+    {
+        $instance = new self();
+
+        foreach ($data as $property => $value) {
+            if (property_exists($instance, $property)) {
+                $instance->{$property} = $value;
+            }
+        }
+
+        return $instance;
     }
 
     /**

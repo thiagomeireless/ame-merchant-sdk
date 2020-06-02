@@ -7,26 +7,30 @@ use JsonSerializable;
 class Order implements JsonSerializable
 {
     /** @var string */
-    private $title;
+    protected $title;
 
     /** @var string */
-    private $description;
+    protected $description;
 
     /** @var int */
-    private $amount;
+    protected $amount;
 
     /** @var string */
-    private $type;
+    protected $type;
 
     /** @var Attribute */
-    private $attributes;
+    protected $attributes;
 
     /**
      * @return array
      */
     public function jsonSerialize(): array
     {
-        return get_object_vars($this);
+        $vars = get_object_vars($this);
+
+        return array_filter($vars, static function ($value) {
+            return $value !== null;
+        });
     }
 
     /**

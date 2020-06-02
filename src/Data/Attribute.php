@@ -15,12 +15,52 @@ class Attribute implements JsonSerializable
     /** @var Item[] */
     private $items;
 
+    /** @var array */
+    private $customPayload;
+
+    /** @var bool */
+    private $paymentOnce;
+
+    /** @var string */
+    private $orderId;
+
     /**
      * @return array
      */
     public function jsonSerialize(): array
     {
-        return get_object_vars($this);
+        $vars = get_object_vars($this);
+
+        return array_filter($vars, static function ($value) {
+            return $value !== null;
+        });
+    }
+
+    /**
+     * @param array $attributes
+     * @return Attribute
+     */
+    public static function createFromArray(array $attributes): Attribute
+    {
+        $instance = new self();
+
+        foreach ($attributes as $property => $value) {
+            if (property_exists($instance, $property)) {
+                if ($property === 'items') {
+                    $items = [];
+
+                    foreach($attributes['items'] as $item) {
+                        $items[] = Item::createFromArray($item);
+                    }
+
+                    $instance->items = $items;
+                } else {
+                    $instance->{$property} = $value;
+                }
+            }
+        }
+
+        return $instance;
     }
 
     /**
@@ -75,5 +115,49 @@ class Attribute implements JsonSerializable
     {
         $this->items = $items;
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCustomPayload(): array
+    {
+        return $this->customPayload;
+    }
+
+    /**
+     * @param array $customPayload
+     * @return Attribute
+     */
+    public function setCustomPayload(array $customPayload): Attribute
+    {
+        $this->customPayload = $customPayload;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPaymentOnce(): bool
+    {
+        return $this->paymentOnce;
+    }
+
+    /**
+     * @param bool $paymentOnce
+     * @return Attribute
+     */
+    public function setPaymentOnce(bool $paymentOnce): Attribute
+    {
+        $this->paymentOnce = $paymentOnce;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderId(): string
+    {
+        return $this->orderId;
     }
 }

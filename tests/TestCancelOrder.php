@@ -16,8 +16,12 @@ $authRequest = new AuthenticationRequest(
 try {
     $authData = $authRequest->execute();
 
-    $cancelOrderRequest = new CancelOrderRequest($authData->getAccessToken(), '783718c5-40ba-4417-a74d-84812b179ba5');
-    $response = $cancelOrderRequest->withDebug()->execute();
+    $cancelOrderRequest = new CancelOrderRequest(
+        $authData->getAccessToken(),
+        '5b036378-2f2f-47bb-a4e7-557c5e02b4ee'
+    );
+
+    $response = $cancelOrderRequest->execute();
 
     echo json_encode($response, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 } catch (Throwable $e) {

@@ -6,23 +6,23 @@ use JsonSerializable;
 
 class Attribute implements JsonSerializable
 {
-    /** @var int */
-    private $cashbackAmountValue;
-
     /** @var string */
-    private $transactionChangedCallbackUrl;
-
-    /** @var Item[] */
-    private $items;
-
-    /** @var array */
-    private $customPayload;
+    private $orderId;
 
     /** @var bool */
     private $paymentOnce;
 
+    /** @var int */
+    private $cashbackAmountValue;
+
+    /** @var array */
+    private $customPayload;
+
+    /** @var Item[] */
+    private $items;
+
     /** @var string */
-    private $orderId;
+    private $transactionChangedCallbackUrl;
 
     /**
      * @return array

@@ -32,7 +32,6 @@ class CreateOrderRequest extends BaseRequest
 
     /**
      * @return CreateOrderResponse
-     * @throws JsonException
      */
     public function execute(): CreateOrderResponse
     {

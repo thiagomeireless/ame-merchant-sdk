@@ -55,6 +55,7 @@ abstract class BaseRequest
 
     /**
      * @return mixed
+     * @throws AmeMerchantSdkException
      */
     public function execute()
     {

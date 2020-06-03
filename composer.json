@@ -1,5 +1,5 @@
 {
-  "name": "thiagom/ame-merchant-sdk",
+  "name": "thiagomeireless/ame-merchant-sdk",
   "description": "SDK para comunicação com a API AME Merchant.",
   "type": "library",
   "config": {

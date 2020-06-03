@@ -41,15 +41,11 @@ class CaptureOrderRequest extends BaseRequest
      */
     protected function makeRequest(): Request
     {
-        try {
-            return new Request(
-                'PUT',
-                "wallet/user/payments/{$this->authorizationId}/capture",
-                ['Authorization' => "Bearer {$this->token}"]
-            );
-        } catch (Throwable $e) {
-            die('morreu: '. $e->getMessage());
-        }
+        return new Request(
+            'PUT',
+            "wallet/user/payments/{$this->authorizationId}/capture",
+            ['Authorization' => "Bearer {$this->token}"]
+        );
     }
 
     /**

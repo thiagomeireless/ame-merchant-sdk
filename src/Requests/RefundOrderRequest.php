@@ -56,16 +56,12 @@ class RefundOrderRequest extends BaseRequest
      */
     protected function makeRequest(): Request
     {
-        try {
-            return new Request(
-                'PUT',
-                "payments/{$this->orderId}/refunds/{$this->refundId}",
-                ['Authorization' => "Bearer {$this->token}"],
-                json_encode(['amount' => $this->amount])
-            );
-        } catch (Throwable $e) {
-            die('morreu: '. $e->getMessage());
-        }
+        return new Request(
+            'PUT',
+            "payments/{$this->orderId}/refunds/{$this->refundId}",
+            ['Authorization' => "Bearer {$this->token}"],
+            json_encode(['amount' => $this->amount])
+        );
     }
 
     /**

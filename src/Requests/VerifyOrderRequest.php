@@ -46,15 +46,11 @@ class VerifyOrderRequest extends BaseRequest
      */
     protected function makeRequest(): Request
     {
-        try {
-            return new Request(
-                'GET',
-                "orders/{$this->orderId}",
-                ['Authorization' => "Bearer {$this->token}"]
-            );
-        } catch (Throwable $e) {
-            die('morreu: '. $e->getMessage());
-        }
+        return new Request(
+            'GET',
+            "orders/{$this->orderId}",
+            ['Authorization' => "Bearer {$this->token}"]
+        );
     }
 
     /**

@@ -43,16 +43,12 @@ class CreateOrderRequest extends BaseRequest
      */
     protected function makeRequest(): Request
     {
-        try {
-            return new Request(
-                'POST',
-                'orders',
-                ['Authorization' => "Bearer {$this->token}"],
-                json_encode($this->order, JSON_THROW_ON_ERROR)
-            );
-        } catch (Throwable $e) {
-            die('morreu: '. $e->getMessage());
-        }
+        return new Request(
+            'POST',
+            'orders',
+            ['Authorization' => "Bearer {$this->token}"],
+            json_encode($this->order)
+        );
     }
 
     /**

@@ -28,17 +28,17 @@ class RefundOrderRequest extends BaseRequest
      * RefundOrderRequest constructor.
      *
      * @param string $token
-     * @param string $orderId
+     * @param string $authorizationId
      * @param string $refundId
      * @param int $amount
      * @param bool $production
      */
-    public function __construct(string $token, string $orderId, string $refundId, int $amount, bool $production = true)
+    public function __construct(string $token, string $authorizationId, string $refundId, int $amount, bool $production = true)
     {
         parent::__construct($production);
 
         $this->token    = $token;
-        $this->orderId  = $orderId;
+        $this->orderId  = $authorizationId;
         $this->refundId = $refundId;
         $this->amount   = $amount;
     }

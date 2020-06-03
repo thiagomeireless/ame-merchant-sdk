@@ -16,21 +16,21 @@ class CancelOrderRequest extends BaseRequest
     private $token;
 
     /** @var string */
-    private $orderId;
+    private $authorizationId;
 
     /**
      * CancelOrderRequest constructor.
      *
      * @param string $token
-     * @param string $orderId
+     * @param string $authorizationId
      * @param bool $production
      */
-    public function __construct(string $token, string $orderId, bool $production = true)
+    public function __construct(string $token, string $authorizationId, bool $production = true)
     {
         parent::__construct($production);
 
-        $this->token   = $token;
-        $this->orderId = $orderId;
+        $this->token           = $token;
+        $this->authorizationId = $authorizationId;
     }
 
     /**
@@ -49,7 +49,7 @@ class CancelOrderRequest extends BaseRequest
         try {
             return new Request(
                 'PUT',
-                "wallet/user/payments/{$this->orderId}/cancel",
+                "wallet/user/payments/{$this->authorizationId}/cancel",
                 ['Authorization' => "Bearer {$this->token}"]
             );
         } catch (Throwable $e) {

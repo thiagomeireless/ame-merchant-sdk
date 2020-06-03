@@ -1,0 +1,30 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.7"
+services:
+    redis:
+      image: redis:alpine
+      container_name: ame-merchant-sdk-redis
+
+    webserver:
+      image: nginx:alpine
+      container_name: ame-merchant-sdk-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "3210:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: ame-merchant-sdk-php-fpm
+      working_dir: /application
+      environment:
+        - AME_MERCHANT_USER=${AME_MERCHANT_USER}
+        - AME_MERCHANT_PASSWORD=${AME_MERCHANT_PASSWORD}
+        - AME_CALLBACK_URL=${AME_CALLBACK_URL}
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini

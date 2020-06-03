@@ -1,6 +1,3 @@
-###############################################################################
-#                          Generated on phpdocker.io                          #
-###############################################################################
 version: "3.7"
 services:
     redis:
@@ -18,7 +15,8 @@ services:
        - "3210:80"
 
     php-fpm:
-      build: phpdocker/php-fpm
+      build:
+        context: ./phpdocker/php-fpm
       container_name: ame-merchant-sdk-php-fpm
       working_dir: /application
       environment:

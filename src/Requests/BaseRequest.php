@@ -35,8 +35,9 @@ abstract class BaseRequest
     {
         $this->client = new Client([
             'base_uri' => $production ? $this->baseUri['production'] : $this->baseUri['homologation'],
-            'headers' => [
-                'Content-Type' => 'application/json',
+            'headers'  => [
+                'User-Agent'      => 'ByINTI/1.0',
+                'Content-Type'    => 'application/json',
                 'Accept-Encoding' => 'gzip, deflate',
             ],
         ]);
